@@ -1,0 +1,379 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  margin-top: 0.35rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 0.65rem 0.5rem;
+  min-height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mode-toggle button.active {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* Form fields */
+.field-group {
+  margin-bottom: 1.1rem;
+}
+
+.field-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.4rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input[type="number"],
+select {
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid #ddd;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: border-color 0.15s;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #1a1a2e;
+  background: #fff;
+}
+
+select {
+  cursor: pointer;
+}
+
+.input-dist {
+  flex: 1;
+  min-width: 80px;
+}
+
+.input-unit {
+  width: 90px;
+}
+
+.input-hms {
+  flex: 1;
+  min-width: 52px;
+  max-width: 70px;
+  text-align: center;
+}
+
+.time-sep {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #aaa;
+  line-height: 1;
+}
+
+.input-pace-mm {
+  flex: 1;
+  min-width: 60px;
+  max-width: 80px;
+  text-align: center;
+}
+
+.input-pace-ss {
+  flex: 1;
+  min-width: 52px;
+  max-width: 70px;
+  text-align: center;
+}
+
+.pace-label {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Pace output unit toggle */
+.unit-toggle {
+  display: flex;
+  border: 1.5px solid #ddd;
+  border-radius: 7px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.unit-btn {
+  padding: 0.5rem 1rem;
+  min-height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #666;
+  transition: background 0.15s, color 0.15s;
+}
+
+.unit-btn + .unit-btn {
+  border-left: 1.5px solid #ddd;
+}
+
+.unit-btn.active {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+/* Race distance presets */
+.preset-distances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.preset-btn {
+  padding: 0.3rem 0.75rem;
+  min-height: 44px;
+  border: 1.5px solid #ddd;
+  border-radius: 20px;
+  background: #fafafa;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.preset-btn:hover {
+  border-color: #1a1a2e;
+  color: #1a1a2e;
+}
+
+.preset-btn.selected {
+  background: #1a1a2e;
+  border-color: #1a1a2e;
+  color: #fff;
+}
+
+/* Splits */
+.splits-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.splits-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #1a1a2e;
+}
+
+.splits-interval {
+  display: none;
+}
+
+.interval-label {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.input-interval {
+  flex: 1;
+  min-width: 70px;
+}
+
+/* Error */
+.error-msg {
+  display: none;
+  background: #fff3f3;
+  border: 1.5px solid #f5a5a5;
+  border-radius: 7px;
+  color: #c0392b;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+/* Button */
+.calc-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.15s;
+}
+
+.calc-btn:hover {
+  background: #2d2d4e;
+}
+
+/* Results */
+.results {
+  display: none;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1.5px solid #eee;
+}
+
+.result-primary {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.result-primary .result-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.25rem;
+}
+
+.result-primary .result-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #1a1a2e;
+}
+
+/* Splits table */
+#splits-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+#splits-container th,
+#splits-container td {
+  text-align: right;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#splits-container th:first-child,
+#splits-container td:first-child {
+  text-align: left;
+}
+
+#splits-container thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #999;
+  border-bottom: 2px solid #eee;
+}
+
+#splits-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#splits-container tbody tr.partial td {
+  color: #888;
+  font-style: italic;
+}
+
+#splits-container tbody tr:hover {
+  background: #f9f9f9;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .result-primary .result-value {
+    font-size: 1.9rem;
+  }
+
+  .input-unit {
+    width: 80px;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Pace Calculator",
+  "short_name": "Pace Calc",
+  "description": "Running pace and finish time calculator",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme_color": "#1a1a2e",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

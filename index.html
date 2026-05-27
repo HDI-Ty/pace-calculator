@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pace Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pace Calc" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Pace Calculator</h1>
+      <p>For runners — calculate pace or finish time</p>
+    </header>
+
+    <div class="card">
+      <!-- Mode toggle -->
+      <div class="mode-toggle">
+        <button id="btn-time-to-pace">Time &rarr; Pace</button>
+        <button id="btn-pace-to-time">Pace &rarr; Time</button>
+      </div>
+
+      <!-- Distance -->
+      <div class="field-group">
+        <label for="distance">Distance</label>
+        <div class="input-row">
+          <input type="number" id="distance" class="input-dist" min="0" step="any" placeholder="26.2" />
+          <select id="dist-unit" class="input-unit">
+            <option value="mi">miles</option>
+            <option value="km">km</option>
+          </select>
+        </div>
+        <div class="preset-distances">
+          <button type="button" class="preset-btn" data-value="1" data-unit="mi">1 mi</button>
+          <button type="button" class="preset-btn" data-value="5" data-unit="km">5K</button>
+          <button type="button" class="preset-btn" data-value="10" data-unit="km">10K</button>
+          <button type="button" class="preset-btn" data-value="13.1" data-unit="mi">Half</button>
+          <button type="button" class="preset-btn" data-value="26.2" data-unit="mi">Marathon</button>
+        </div>
+      </div>
+
+      <!-- Total time (Mode A) -->
+      <div class="field-group" id="section-time">
+        <label>Total Time</label>
+        <div class="input-row">
+          <input type="number" id="time-hh" class="input-hms" min="0" max="99" placeholder="0" />
+          <span class="time-sep">h</span>
+          <input type="number" id="time-mm" class="input-hms" min="0" max="59" placeholder="00" />
+          <span class="time-sep">m</span>
+          <input type="number" id="time-ss" class="input-hms" min="0" max="59" placeholder="00" />
+          <span class="time-sep">s</span>
+        </div>
+      </div>
+
+      <!-- Pace output unit (Mode A only) -->
+      <div class="field-group" id="section-pace-out">
+        <label>Show pace in</label>
+        <div class="unit-toggle">
+          <button type="button" class="unit-btn active" data-unit="mi">per mile</button>
+          <button type="button" class="unit-btn" data-unit="km">per kilometer</button>
+        </div>
+      </div>
+
+      <!-- Pace (Mode B) -->
+      <div class="field-group" id="section-pace" style="display:none;">
+        <label>Pace</label>
+        <div class="input-row">
+          <input type="number" id="pace-mm" class="input-pace-mm" min="0" placeholder="8" />
+          <span class="time-sep">:</span>
+          <input type="number" id="pace-ss" class="input-pace-ss" min="0" max="59" placeholder="00" />
+          <span class="pace-label">per</span>
+          <select id="pace-unit" class="input-unit">
+            <option value="mi">mile</option>
+            <option value="km">km</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Splits toggle -->
+      <div class="field-group">
+        <label class="splits-toggle">
+          <input type="checkbox" id="show-splits" />
+          Show splits
+        </label>
+        <div class="input-row splits-interval" id="splits-interval">
+          <span class="interval-label">Every</span>
+          <input type="number" id="interval-val" class="input-interval" min="0" step="any" placeholder="1" />
+          <select id="interval-unit" class="input-unit">
+            <option value="mi">miles</option>
+            <option value="km">km</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="error-msg" id="error-msg"></div>
+
+      <!-- Calculate -->
+      <button class="calc-btn" id="calc-btn">Calculate</button>
+
+      <!-- Results -->
+      <div class="results" id="results">
+        <div class="result-primary">
+          <div class="result-label" id="result-label">Pace</div>
+          <div class="result-value" id="result-value">—</div>
+        </div>
+        <div id="splits-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
