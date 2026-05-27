@@ -30,7 +30,7 @@
       <div class="field-group">
         <label for="distance">Distance</label>
         <div class="input-row">
-          <input type="number" id="distance" class="input-dist" min="0" step="any" placeholder="26.2" />
+          <input type="number" id="distance" class="input-dist" inputmode="numeric" min="0" step="any" placeholder="26.2" />
           <select id="dist-unit" class="input-unit">
             <option value="mi">miles</option>
             <option value="km">km</option>
@@ -49,11 +49,11 @@
       <div class="field-group" id="section-time">
         <label>Total Time</label>
         <div class="input-row">
-          <input type="number" id="time-hh" class="input-hms" min="0" max="99" placeholder="0" />
+          <input type="number" id="time-hh" class="input-hms" inputmode="numeric" min="0" max="99" placeholder="0" />
           <span class="time-sep">h</span>
-          <input type="number" id="time-mm" class="input-hms" min="0" max="59" placeholder="00" />
+          <input type="number" id="time-mm" class="input-hms" inputmode="numeric" min="0" max="59" placeholder="00" />
           <span class="time-sep">m</span>
-          <input type="number" id="time-ss" class="input-hms" min="0" max="59" placeholder="00" />
+          <input type="number" id="time-ss" class="input-hms" inputmode="numeric" min="0" max="59" placeholder="00" />
           <span class="time-sep">s</span>
         </div>
       </div>
@@ -71,9 +71,9 @@
       <div class="field-group" id="section-pace" style="display:none;">
         <label>Pace</label>
         <div class="input-row">
-          <input type="number" id="pace-mm" class="input-pace-mm" min="0" placeholder="8" />
+          <input type="number" id="pace-mm" class="input-pace-mm" inputmode="numeric" min="0" placeholder="8" />
           <span class="time-sep">:</span>
-          <input type="number" id="pace-ss" class="input-pace-ss" min="0" max="59" placeholder="00" />
+          <input type="number" id="pace-ss" class="input-pace-ss" inputmode="numeric" min="0" max="59" placeholder="00" />
           <span class="pace-label">per</span>
           <select id="pace-unit" class="input-unit">
             <option value="mi">mile</option>
@@ -90,7 +90,7 @@
         </label>
         <div class="input-row splits-interval" id="splits-interval">
           <span class="interval-label">Every</span>
-          <input type="number" id="interval-val" class="input-interval" min="0" step="any" placeholder="1" />
+          <input type="number" id="interval-val" class="input-interval" inputmode="numeric" min="0" step="any" placeholder="1" />
           <select id="interval-unit" class="input-unit">
             <option value="mi">miles</option>
             <option value="km">km</option>
