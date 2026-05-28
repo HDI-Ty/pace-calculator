@@ -1,4 +1,4 @@
-const CACHE = 'pace-calc-20260527212507';
+const CACHE = 'pace-calc-20260527212534';
 const FILES = ['./', './index.html', './styles.css', './app.js',
                './manifest.json', './icon.svg'];
 
