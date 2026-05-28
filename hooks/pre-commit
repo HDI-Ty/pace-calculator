@@ -1,0 +1,5 @@
+#!/bin/sh
+# Auto-update SW cache version before every commit
+VERSION="pace-calc-$(date +%Y%m%d%H%M%S)"
+sed -i "s/const CACHE = 'pace-calc-[^']*'/const CACHE = '$VERSION'/" sw.js
+git add sw.js
