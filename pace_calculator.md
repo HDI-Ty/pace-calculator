@@ -76,6 +76,15 @@ The app is fully installable as a home screen app on iPhone:
 
 To install on iPhone: Open in Safari → Share → "Add to Home Screen"
 
+### Dark Mode
+The app supports light and dark themes:
+- **Toggle button** in the header (☀️/🌙) switches between light and dark modes
+- **Persistent**: user's preference is saved to localStorage
+- **System preference detection**: defaults to the user's OS color scheme preference if no saved preference exists
+- **CSS variables** power the theming — all colors switch on theme change with smooth transitions
+- Light mode: clean light grays and navy accents
+- Dark mode: deep purple/navy background with purple accent color for primary actions
+
 ### Reactive UI
 - Pace output updates instantly when the pace unit toggle is changed (no need to recalculate)
 - Mode toggle shows/hides relevant input sections
@@ -88,11 +97,13 @@ To install on iPhone: Open in Safari → Share → "Add to Home Screen"
 ```
 pace-calculator/
 ├── index.html         # HTML markup + PWA meta tags + SW registration script
-├── styles.css         # Styles + mobile media query at 500px
-├── app.js             # All calculation logic + event listeners
+├── styles.css         # Styles + dark mode theme variables + mobile media query at 500px
+├── app.js             # All calculation logic + event listeners + dark mode toggle logic
 ├── manifest.json      # PWA manifest
 ├── icon.svg           # App icon (192×192 SVG)
 ├── sw.js              # Service worker (network-first strategy)
+├── hooks/
+│   └── pre-commit     # Git hook: auto-updates SW cache version on every commit
 └── pace_calculator.md # This file
 ```
 
@@ -132,14 +143,18 @@ Pages redeploys within ~60 seconds. Updates appear on the phone on next app load
 
 ## Important Context for Future Development
 
-### Service Worker Strategy
-The app uses a **network-first** strategy (as of latest update):
+### Service Worker Strategy & Cache Busting
+The app uses a **network-first** strategy:
 1. On fetch, tries the network first
 2. On success, updates the cache and returns the fresh response
 3. On failure (offline), returns cached version
 4. New service worker activates immediately without requiring an app restart
 
-This means users always see the latest version when online, but the app still works offline.
+**Cache Busting**: To ensure users always get fresh app files after an update, the service worker cache key is automatically versioned with a timestamp (e.g., `pace-calc-20260527213045`) on every commit. A **git pre-commit hook** (`hooks/pre-commit`) rewrites `sw.js` before each commit, changing the cache key. This guarantees the browser detects a new service worker and clears the old cache on the next page load.
+
+**Setup** (one-time): After cloning, run `git config core.hooksPath hooks` to activate the hook.
+
+This means users always see the latest version when online, but the app still works offline, and developers never need to manually bump cache versions.
 
 ### Conversion Constants
 All internal math uses miles and seconds. The `KM_PER_MILE` constant is used for conversions:
@@ -180,9 +195,11 @@ Before making changes, verify:
 
 ---
 
+## Completed Features
+- ✅ **Dark mode toggle** — theme preference detection + CSS variables + localStorage persistence (completed May 2026)
+
 ## Future Enhancement Ideas
 
-- **Dark mode toggle** — add theme preference detection + CSS variables
 - **Workout templates** — save favorite distances/paces
 - **Custom race distances** — let users add their own presets
 - **Split comparison** — compare actual splits to target pace
